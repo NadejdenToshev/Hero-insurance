@@ -8,14 +8,14 @@ class User(models.Model):
     email = models.CharField(max_length=20)
 
 class Broker(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    admin = models.BooleanField
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    admin = models.BooleanField(default=False)
 
 class Customer(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    PIN = models.IntegerField
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    PIN = models.IntegerField()
 
 class UserInfo(models.Model):
     name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=10)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
