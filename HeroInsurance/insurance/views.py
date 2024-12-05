@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
 def index(request):
-    return render(request, "HeroInsurance/insurance/templates/index.html")
+    return render(request, "index.html")
 
 
 

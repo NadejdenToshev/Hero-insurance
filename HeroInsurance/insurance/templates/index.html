@@ -1,72 +1,30 @@
-{% block content %} 
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
 
-    {% if user.is_authenticated %}
-    <div>
-        <h1>hello, {{ user.username }}</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login-page.css">
+  <script defer src="login-page.js"></script>
+</head>
+
+<body>
+  <main id="main-holder">
+    <h1 id="login-header">Login</h1>
+    
+    <div id="login-error-msg-holder">
+      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
     </div>
+    
+    <form id="login-form">
+      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+      <input type="submit" value="Login" id="login-form-submit">
+    </form>
+  
+  </main>
+</body>
 
-    {% else %}
-    <div class="col-md-4">
-        {% if messages %} 
-            {% for message in messages %}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <span>{{ message }}</span>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Close"
-                    ></button>
-                </div>
-            {% endfor %} 
-        {% endif %}
-
-        <form method="POST" action="{% url 'index' %}">
-            {% csrf_token %}
-            <div class="mb-3">
-                <input
-                    type="text"
-                    class="form-control"
-                    name="id"
-                    placeholder="Enter your Staff ID"
-                    required
-                />
-            </div>
-            <div class="mb-3">
-                <input
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    placeholder="Enter your password"
-                    required
-                />
-            </div>
-            <button type="submit" class="btn btn-primary mt-2">Login</button>
-        </form>
-    </div>
-    {% endif %} 
-
-{% endblock %}
-
-<form method="POST" action="{% url 'index' %}">
-    {% csrf_token %}
-    <div class="mb-3">
-        <input
-            type="text"
-            class="form-control"
-            name="id"
-            placeholder="Enter your Staff ID"
-            required
-        />
-    </div>
-    <div class="mb-3">
-        <input
-            type="password"
-            class="form-control"
-            name="password"
-            placeholder="Enter your password"
-            required
-        />
-    </div>
-    <button type="submit" class="btn btn-primary mt-2">Login</button>
-</form>
+</html>
